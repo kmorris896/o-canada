@@ -40,13 +40,15 @@ bot.on('message', msg => {
     const command = args.shift().toLowerCase();
     logger.info(`Called command: ${command}`);
 
-    if (!bot.commands.has(command)) return;
-
     try {
       bot.commands.get(command).execute(msg, args);
     } catch (error) {
       logger.error(error);
       msg.reply('there was an error trying to execute that command!');
     }
+  } else if (msg.author.id == "756995470483521738") {
+    msg.channel.send("Hello world!");
   }
+
+
 });
