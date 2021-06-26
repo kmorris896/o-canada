@@ -1,0 +1,17 @@
+{
+  "name": "node-js-discord-bot-github-template",
+  "version": "1.0.0",
+  "description": "Discord bot template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kmorris896",
+  "license": "AGPL",
+  "private": true,
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0",
+    "winston": "^3.3.3"
+  }
+}
