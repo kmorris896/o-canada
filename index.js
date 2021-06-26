@@ -1,6 +1,7 @@
 require('dotenv').config();
 const winston = require('winston');
 const Discord = require('discord.js');
+var last = -1;
 
 // Winston Logger Declarations
 const logger = winston.createLogger({
@@ -47,8 +48,35 @@ bot.on('message', msg => {
       msg.reply('there was an error trying to execute that command!');
     }
   } else if (msg.author.id == "756995470483521738") {
-    msg.channel.send("Hello world!");
+    const randomInt = Math.floor(Math.random() * 5);
+    logger.info("randomInt: " + randomInt);
+
+    if (randomInt != last) {
+      last = randomInt;
+
+      switch (randomInt) {
+        case 0:
+          msg.react('🇨🇦');
+          break;
+        
+        case 1:
+          msg.reply("fellow Canadian, eh?")
+          break;
+
+        case 2:
+          const canadianSay = [
+            "The Vancouver Canucks will just mop the floor of those Maple Leafs.",
+            "You know how a Canadian spells Canada right?  :regional_indicator_c:, eh, :regional_indicator_n:, eh, :regional_indicator_d:, eh.",
+            "It's Canada Day today.  It means that the Tim Horton's is giving away free bear claws!  That's better than all the poutine in the world!",
+            "The Great Maple Syrup robbery is Canada's most nortorious crime."
+          ];
+
+          msg.channel.send(canadianSay[Math.floor(Math.random() * canadianSay.length)]);
+          break;
+    
+        default:
+          break;
+      }
+    }
   }
-
-
 });
