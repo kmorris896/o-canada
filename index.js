@@ -48,35 +48,55 @@ bot.on('message', msg => {
       msg.reply('there was an error trying to execute that command!');
     }
   } else if (msg.author.id == "756995470483521738") {
-    const randomInt = Math.floor(Math.random() * 5);
-    logger.info("randomInt: " + randomInt);
-
-    if (randomInt != last) {
-      last = randomInt;
-
-      switch (randomInt) {
-        case 0:
-          msg.react('🇨🇦');
-          break;
-        
-        case 1:
-          msg.reply("fellow Canadian, eh?")
-          break;
-
-        case 2:
-          const canadianSay = [
-            "The Vancouver Canucks will just mop the floor of those Maple Leafs.",
-            "You know how a Canadian spells Canada right?  :regional_indicator_c:, eh, :regional_indicator_n:, eh, :regional_indicator_d:, eh.",
-            "It's Canada Day today.  It means that the Tim Horton's is giving away free bear claws!  That's better than all the poutine in the world!",
-            "The Great Maple Syrup robbery is Canada's most nortorious crime."
-          ];
-
-          msg.channel.send(canadianSay[Math.floor(Math.random() * canadianSay.length)]);
-          break;
-    
-        default:
-          break;
-      }
-    }
+    canadaDay(msg, 5);
+  } else if (msg.author.bot == false) {
+    canadaDay(msg, 50);
   }
 });
+
+
+function canadaDay(msg, chanceMax) {
+  const randomInt = Math.floor(Math.random() * chanceMax);
+  logger.info("randomInt: " + randomInt + " -- last: " + last);
+
+  if (randomInt != last) {
+    last = randomInt;
+
+    switch (randomInt) {
+      case 0:
+        msg.react('🇨🇦');
+        break;
+      
+      case 1:
+        msg.reply("fellow Canadian, eh?")
+        break;
+
+      case 2:
+        const canadianSay = [
+          "The Vancouver Canucks will just mop the floor of those Maple Leafs.",
+          "You know how a Canadian spells Canada right?  :regional_indicator_c:, eh, :regional_indicator_n:, eh, :regional_indicator_d:, eh.",
+          "It's Canada Day today.  It means that the Tim Horton's is giving away free bear claws!  That's better than all the poutine in the world!",
+          "The Great Maple Syrup robbery is Canada's most nortorious crime."
+        ];
+
+        msg.channel.send(canadianSay[Math.floor(Math.random() * canadianSay.length)]);
+        break;
+
+      case 3:
+        const gifs = [
+          "https://media.giphy.com/media/Gnvk5QoQcNala/giphy.gif",
+          "https://media.giphy.com/media/5FiuCZoL0Ab1m/giphy.gif",
+          "https://media.giphy.com/media/uAZGTdYXRqLVWqpNIn/giphy.gif",
+          "https://media.giphy.com/media/l0Ex0GiS5QZSrMO6k/giphy.gif",
+          "https://media.giphy.com/media/l0Ex0GiS5QZSrMO6k/giphy.gif",
+          "https://media.giphy.com/media/dq9eT0JxapGi4/giphy.gif"
+        ];
+
+        msg.channel.send(gifs[Math.floor(Math.random() * gifs.length)]);
+        break;
+  
+      default:
+        break;
+    }
+  }
+}
