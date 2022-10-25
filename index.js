@@ -47,7 +47,8 @@ bot.on('message', msg => {
       logger.error(error);
       msg.reply('there was an error trying to execute that command!');
     }
-  } else if (msg.author.id == "756995470483521738") {
+  } else if (msg.author.id == "734874076585132172") {
+    console.log("Message by target!")
     canadaDay(msg, 5);
   } else if (msg.author.bot == false) {
     canadaDay(msg, 50);
